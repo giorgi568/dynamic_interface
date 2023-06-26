@@ -17,6 +17,8 @@ body{
   width: fit-content;
   padding:20px 0px;
   border-radius: 8%;
+  overflow: hidden;
+  max-height: 0px;
 }
 a{
   height: 30px;
@@ -28,15 +30,19 @@ a{
   align-items: center;
 }
 .to-hide{
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 a:hover{
   background-color: rgb(170, 15, 15);
 }
 
 .wrapper.transitioned{
-  transition: 5s;
-  /* height: 300px; */
+  /* transition: 5s; */
+  transition: max-height 0.8s;
+  transition-timing-function: ease-in-out;
+  max-height: 500px;
   /* background-color: aqua; */
-  margin-left: 50%
+  /* margin-left: 50% */
+  /* opacity: 0.5; */
 }
