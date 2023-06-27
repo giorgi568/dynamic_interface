@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slideshow</title>
+  <style>
+    body{
+      padding: 0;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .slide1{
+      background-image: url(images/water.jpg);
+    }
+    .slide2{
+      background-image: url(images/lime.jpg);
+    }
+    .slide3{
+      background-image: url(images/leaves.jpg);
+    }
+    .slide{
+      min-height: 400px;
+      min-width: 600px;
+      max-height: 400px;
+      max-width: 600px;
+      background-size:cover;
+      background-position: center;
+    }
+    .slides{
+      display: flex;
+      transform: translate(-600px);
+    }
+    .frame{
+      max-height: 400px;
+      max-width: 600px;
+      min-height: 400px;
+      min-width: 600px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <h1>simple image slider</h1>
+  <div class="frame">
+    <div class="slides">
+      <div class="slide1 slide"></div>
+      <div class="slide2 slide"></div>
+      <div class="slide3 slide"></div>
+    </div>
+  </div>
+
+  <script>
+    function next() {
+      
+    }
+  </script>
+</body>
+</html>
