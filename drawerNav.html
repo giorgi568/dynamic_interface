@@ -14,7 +14,7 @@
       background: none;
       background-color:darkorchid;
       color: white;
-      border: 1px solid black;
+      border: 1px solid darkorchid;
       border-radius: 50%;
       font-size: 25px;
       padding: 10px;
@@ -23,30 +23,74 @@
       outline: inherit;
       height: 70px;
       width: 70px;
+      position:absolute;
+      z-index: 12;
     }
-    .cover.transformed{
-      background-color: aqua;
-      height: 80vh;
-      width: 150vw;
+    .cover{
+      height: 100px;
+      width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      opacity: 0;
       position: absolute;
+      transition: all ease-in-out 1s;
+    }
+    .cover.transitioned{
+      opacity: 1;
+      background-color: darkorchid;
+      height: 80vh;
+      width: 100vw;
       top: 0;
       left: 0;
-      border-radius: 0 20px 2000px 0px; 
+      border-radius: 0 0px 350px 0px; 
       padding: 0;
       margin: 0;
-      z-index: 10;
-      backdrop-filter: blur(20px);
+      position: absolute;
+      z-index: 11;
+      /* z-index: 10;
+      background: rgb(0, 0, 0,.2);
+      backdrop-filter: blur(20px); */
     }
-    /* h1{
+    .added{
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      z-index: 10;
+      transition: all 2s;
+      background: rgb(0, 0, 0,.2);
+      backdrop-filter: blur(2px);
+    }
+    h1{
       z-index: 1;
-    } */
+      position: fixed;
+      bottom: 0;
+    }
   </style>
 </head>
 <body>
+  <div id="backdrop"></div>
 <h1> heres example of drawer navigation mainly for mobile phones</h1>  
 <button id="btn">
   <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg>
-  <div class="cover"></div>
 </button>
+<div id="cover" class="cover">
+  <p>heiii its me mario</p>
+  <p>glad to have done it</p>
+  <p>exciting isnt it?</p>
+</div>
+
+
+
+<script>
+  const btn = document.getElementById('btn');
+  btn.addEventListener('click', () => {
+    const cover = document.getElementById('cover');
+    cover.classList.toggle('transitioned');
+    const backdrop = document.getElementById('backdrop');
+    backdrop.classList.toggle('added');
+  })
+</script>
 </body>
 </html>
