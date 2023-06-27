@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>drawer-nav</title>
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 0;
+      margin: 0;
+    }
+    button{
+      background: none;
+      background-color:darkorchid;
+      color: white;
+      border: 1px solid black;
+      border-radius: 50%;
+      font-size: 25px;
+      padding: 10px;
+      /* font: inherit; */
+      cursor: pointer;
+      outline: inherit;
+      height: 70px;
+      width: 70px;
+    }
+    .cover.transformed{
+      background-color: aqua;
+      height: 80vh;
+      width: 150vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 0 20px 2000px 0px; 
+      padding: 0;
+      margin: 0;
+      z-index: 10;
+      backdrop-filter: blur(20px);
+    }
+    /* h1{
+      z-index: 1;
+    } */
+  </style>
+</head>
+<body>
+<h1> heres example of drawer navigation mainly for mobile phones</h1>  
+<button id="btn">
+  <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg>
+  <div class="cover"></div>
+</button>
+</body>
+</html>

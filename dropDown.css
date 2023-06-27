@@ -16,6 +16,7 @@ body{
   background-color: brown;
   width: fit-content;
   padding:20px 0px;
+  border: 1px solid black;
   border-radius: 8%;
   overflow: hidden;
   max-height: 0px;
@@ -28,6 +29,8 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  color: white;
 }
 .to-hide{
   opacity: 0;
@@ -40,7 +43,7 @@ a:hover{
 .wrapper.transitioned{
   /* transition: 5s; */
   transition: max-height 0.8s;
-  transition-timing-function: ease-in-out;
+  transition-timing-function: cubic-bezier(0.9, 1.22, 1, 2.92);
   max-height: 500px;
   /* background-color: aqua; */
   /* margin-left: 50% */
