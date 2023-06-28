@@ -9,6 +9,10 @@
       padding: 0;
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
     }
     .slide1{
       background-image: url(images/water.jpg);
@@ -29,7 +33,8 @@
     }
     .slides{
       display: flex;
-      transform: translate(-600px);
+      gap: 5px;
+      transition: all 1s;
     }
     .frame{
       max-height: 400px;
@@ -37,13 +42,102 @@
       min-height: 400px;
       min-width: 600px;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .one{
+      transform: translate(-605px);      
+    }
+    .two{
+      transform: translate(-1210px);
+    }
+    p{
+      padding: 0;
+      margin: 0;
+      /* background-color: red; */
+      /* width: 70px; */
+      /* height: 70px; */
+      display: flex;
+      /* justify-content: center; */
+      /* align-items: center; */
+      
+      /* position: absolute; */
+      fill: white;
+      opacity: 0.6;
+      background-color: rgba(0,0,0,.2);
+      border-radius: 5px;
+      margin: 5px;
+    }
+    p#first:hover{
+      background-color: rgba(0,0,0,.5);
+      animation-name: moveLeft;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+    p#second:hover{
+      background-color: rgba(0,0,0,.5);
+      animation-name: moveRight;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+    @keyframes moveLeft {
+      100% { transform: translate(-10px);}
+    }
+    @keyframes moveRight {
+      100% { transform: translate(10px);}
+    }
+    .btns{
+      position: absolute;
+      display: flex;
+      width: 600px;
+      /* height: 400px; */
+      justify-content: space-between;
+      z-index: 10;
+    }
+    svg{
+      width: 80px;
+      height: 120px;
+    }
+    .dots{
+      position: absolute;
+      z-index: 9;
+      /* background-color: red; */
+      /* opacity: 0.5; */
+      height: 400px;
+      width: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      gap: 15px;
+    }
+    .dot{
+      height: 10px;
+      width: 10px;
+      margin-bottom: 5px;
+      background-color: rgba(0,0,0,.5);
+      border-radius: 15px;
+      cursor: pointer;
+    }
+    .selected{
+      background-color: rgba(0,0,0,.7);
     }
   </style>
 </head>
 <body>
   <h1>simple image slider</h1>
   <div class="frame">
-    <div class="slides">
+    <div class="btns">
+      <p id="first">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 560 960" ><path d="M400-80 0-480l400-400 56 57-343 343 343 343-56 57Z"/></svg></p>
+      <p id="second">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="140 -960 560 960"><path d="m304-82-56-57 343-343-343-343 56-57 400 400L304-82Z"/></svg></p>      
+    </div>
+    <div class="dots">
+      <div class="dot" id="dot"></div>
+      <div class="dot" id="dot1"></div>
+      <div class="dot" id="dot2"></div>
+    </div>
+    <div class="slides" id="slides">
       <div class="slide1 slide"></div>
       <div class="slide2 slide"></div>
       <div class="slide3 slide"></div>
@@ -51,9 +145,54 @@
   </div>
 
   <script>
+    const slides = document.getElementById('slides');
+    const dot0 = document.getElementById('dot');
+    const dot1 = document.getElementById('dot1');
+    const dot2 = document.getElementById('dot2');
     function next() {
-      
+      if(slides.classList.contains('one')){
+        slides.classList.remove('one');
+        slides.classList.add('two');
+      }else if (slides.classList.contains('two')){
+        slides.classList.remove('two');
+      }else{
+        slides.classList.add('one');
+        dot0.classList.add('selected')
+      }
+    };
+    function previous() {
+      if(slides.classList.contains('one')){
+        slides.classList.remove('one');
+      }else if (slides.classList.contains('two')){
+        slides.classList.remove('two');
+        slides.classList.add('one');
+      }else{
+        slides.classList.add('two');
+      }
+    };
+    
+    const btn1 = document.getElementById('first');
+    const btn2 = document.getElementById('second');
+    
+    // let intervalId = setInterval(function(){
+    //   next();
+    // }, 5000);
+    let timer = function timeout() {
+      setTimeout(() => {
+        next();
+        timeout();
+      }, 5000);
     }
+    timer();
+
+    btn1.addEventListener('click', () => {
+      previous();
+    });
+
+    btn2.addEventListener('click', () => {
+      next();
+    });
+
   </script>
 </body>
 </html>
