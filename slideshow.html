@@ -133,7 +133,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="140 -960 560 960"><path d="m304-82-56-57 343-343-343-343 56-57 400 400L304-82Z"/></svg></p>      
     </div>
     <div class="dots">
-      <div class="dot" id="dot"></div>
+      <div class="dot selected" id="dot"></div>
       <div class="dot" id="dot1"></div>
       <div class="dot" id="dot2"></div>
     </div>
@@ -153,21 +153,50 @@
       if(slides.classList.contains('one')){
         slides.classList.remove('one');
         slides.classList.add('two');
+
+        dot0.classList.remove('selected');
+        dot1.classList.remove('selected');
+        dot2.classList.remove('selected');
+        dot2.classList.add('selected');
       }else if (slides.classList.contains('two')){
         slides.classList.remove('two');
+
+        dot0.classList.remove('selected');
+        dot1.classList.remove('selected');
+        dot2.classList.remove('selected');
+        dot0.classList.add('selected');
       }else{
         slides.classList.add('one');
-        dot0.classList.add('selected')
+
+        dot0.classList.remove('selected');
+        dot1.classList.remove('selected');
+        dot2.classList.remove('selected');
+        dot1.classList.add('selected');
       }
     };
     function previous() {
       if(slides.classList.contains('one')){
         slides.classList.remove('one');
+
+        dot0.classList.remove('selected');
+        dot1.classList.remove('selected');
+        dot2.classList.remove('selected');
+        dot0.classList.add('selected');
       }else if (slides.classList.contains('two')){
         slides.classList.remove('two');
         slides.classList.add('one');
+
+        dot0.classList.remove('selected');
+        dot1.classList.remove('selected');
+        dot2.classList.remove('selected');
+        dot1.classList.add('selected');
       }else{
         slides.classList.add('two');
+
+        dot0.classList.remove('selected');
+        dot1.classList.remove('selected');
+        dot2.classList.remove('selected');
+        dot2.classList.add('selected');
       }
     };
     
@@ -193,6 +222,48 @@
       next();
     });
 
+    // function moveToSlide(n) {
+    //   if(n === 'dot1'){
+    //     slides.classList.remove('two');
+    //     slides.classList.add('one');
+    //   }else if(n === 'dot2'){
+    //     slides.classList.remove('one');
+    //     slides.classList.add('two');
+    //   }else if(n === 'dot0') {
+    //     slides.classList.remove('one');
+    //     slides.classList.remove('two');
+    //   }
+    // };
+
+    dot0.addEventListener('click', () => {
+      slides.classList.remove('one');
+      slides.classList.remove('two');
+
+      dot0.classList.remove('selected');
+      dot1.classList.remove('selected');
+      dot2.classList.remove('selected');
+      dot0.classList.add('selected');
+    });
+
+    dot1.addEventListener('click', () => {
+      slides.classList.remove('two');
+      slides.classList.add('one');
+
+      dot0.classList.remove('selected');
+      dot1.classList.remove('selected');
+      dot2.classList.remove('selected');
+      dot1.classList.add('selected');
+    });
+
+    dot2.addEventListener('click', () => {
+      slides.classList.remove('one');
+      slides.classList.add('two');
+
+      dot0.classList.remove('selected');
+      dot1.classList.remove('selected');
+      dot2.classList.remove('selected');
+      dot2.classList.add('selected');
+    });
   </script>
 </body>
 </html>
